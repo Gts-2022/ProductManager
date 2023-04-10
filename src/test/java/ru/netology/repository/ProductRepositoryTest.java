@@ -48,7 +48,7 @@ public class ProductRepositoryTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-  /*  @Test
+    @Test
     public void shouldRemoveId() {
         repository.save(product1);
         repository.save(product2);
@@ -57,6 +57,6 @@ public class ProductRepositoryTest {
         Product[] expected = {product1, product3};
         Product[] actual = repository.getProducts();
         Assertions.assertArrayEquals(expected, actual);
-    }*/
+    }
 
 }
