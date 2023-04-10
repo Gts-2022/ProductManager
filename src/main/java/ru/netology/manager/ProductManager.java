@@ -20,8 +20,11 @@ public class ProductManager {
         for (Product product : repository.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
+  /*              for (int i = 0; i < result.length; i++) {
+                    tmp[i]=result[i];
 
-                System.arraycopy(result, 0, tmp, 0, result.length);
+                }*/
+                System.arraycopy(result, 0, tmp, 0, result.length);//Заменяет 2 строчки выше
                 tmp[tmp.length - 1] = product;
                 result = tmp;
             }

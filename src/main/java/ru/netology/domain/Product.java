@@ -1,4 +1,5 @@
 package ru.netology.domain;
+
 public class Product {
 
     protected int id;

@@ -1,6 +1,7 @@
 package ru.netology.repository;
 
 import ru.netology.domain.Product;
+import ru.netology.exception.NotFoundException;
 
 
 public class ProductRepository {
@@ -22,9 +23,12 @@ public class ProductRepository {
     }
 
     public void removeById(int id) {//Удалять по ID
+        Product[] remove = findById(id);// Ищем товар ,который нужно удалить, используя метод findById
+        if (remove == null) {//Если товар не находится , то подключаем исключение otFoundException
+            throw new NotFoundException(id);
+        }
         int length = products.length - 1;
         Product[] tmp = new Product[length];
-
         int copyToIndex = 0; //Переменная для сохоанения места, куда будет сохранятся новый массив
         for (Product product : products) {//Проходимся по всем продуктам, которые сохранены в новом массиве
             if (product.getId() != id) { //Если у прдукта не такое id, которое хотим удалить
@@ -36,6 +40,15 @@ public class ProductRepository {
         products = tmp;//Сохраняем новый массив в нашем поле
     }
 
+    public Product[] findById(int id) {//метод findById, предназначенный для поиска товара в репозитории по его ID
+
+        for (Product product : products) {// Перебираем все товары ,которые хранятся в репозитории
+            if (product.getId() == id) {
+                return products;
+            }
+        }
+        return null;
+    }
 
     public Product[] getProducts() {//Возвращает все Продукты в виде массива
         return products;
